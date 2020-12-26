@@ -1,0 +1,44 @@
+.employeeCard {
+    border: lightgreen 1px solid;
+    border-radius: 10px;
+    background: #e3efe3;
+    margin-left: 20px;
+    min-width: 500px;
+    height: 400px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.employeeCard__form {
+    margin: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.employeeCard__name > input {
+    height: 20px;
+    width: 350px;
+    margin: 8px 0 20px 0;
+}
+.employeeCard__position > select {
+    width: 200px;
+    margin: 8px 0 20px 0;
+}
+.employeeCard__birthdate > input {
+    width: 195px;
+    margin: 8px 0 20px 0;
+}
+/*.employeeCard__sex {*/
+/*    margin: 8px 0 20px 0;*/
+/*}*/
+.employeeCard__sex label {
+    font-weight: normal;
+}
+.employeeCard__sex input {
+    margin: 5px 10px 0 0;
+}
+.employeeCard__isFired > input {
+    margin: 20px 0 20px 15px;
+}
+.employeeCard__colleagues > select {
+    width: 200px;
+    margin: 8px 0 20px 0;
+}

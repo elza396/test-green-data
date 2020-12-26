@@ -1,0 +1,17 @@
+.listEmployees {
+    min-width: 400px;
+}
+.employee {
+    border: #bebebe solid 1px;
+    border-radius: 10px;
+    background: #eeeeee;
+    margin-bottom: 20px;
+}
+.employee__name {
+    font-size: 20px;
+    margin: 10px;
+}
+.employee__attributes {
+    font-size: 15px;
+    margin: 10px 0 0 40px ;
+}
