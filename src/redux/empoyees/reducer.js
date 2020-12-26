@@ -4,10 +4,10 @@ const initialState = {
     all: [
         {
             name: "Gazizova Elza Kadirovna",
-            position: "director",
-            birthdate: "09.12.96",
+            position: "Директор",
+            birthdate: "1996-12-09",
             sex: "female",
-            isFired: false,
+            isFired: true,
             colleagues: [],
         },
         {
