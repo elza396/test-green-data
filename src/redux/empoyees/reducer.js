@@ -3,7 +3,7 @@ import {ADD_EMPLOYEE, DELETE_EMPLOYEE, SELECTED_EMPLOYEE, UPDATE_EMPLOYEE} from 
 const initialState = {
     all: [
         {
-            name: "Gazizova Elza Kadirovna",
+            name: "Газизова Эльза Кадировна",
             position: "Директор",
             birthdate: "1996-12-09",
             sex: "female",
@@ -12,13 +12,22 @@ const initialState = {
             id: 1,
         },
         {
-            name: "Gazizov Salavat Kadirovich",
-            position: "main director",
-            birthdate: "26.10.91",
+            name: "Газизов Салават Кадирович",
+            position: "Разработчик",
+            birthdate: "1991-10-26",
             sex: "male",
             isFired: false,
             colleagues: [],
             id: 2,
+        },
+        {
+            name: "Малков Сергей Васильевич",
+            position: "Разработчик",
+            birthdate: "1991-08-23",
+            sex: "male",
+            isFired: true,
+            colleagues: [],
+            id: 3,
         },
     ],
     selectedId: -1,
@@ -35,6 +44,7 @@ export function employees(state = initialState, action) {
         case DELETE_EMPLOYEE: {
             const newState = {all: state.all.slice(0)};
             const index = newState.all.findIndex(employee => employee.id === action.payload);
+            if(index === -1) return newState;
             newState.all.splice(index, 1);
 
             return newState;

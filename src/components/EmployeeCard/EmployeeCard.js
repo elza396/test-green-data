@@ -1,10 +1,13 @@
 import React from "react";
 import './EmployeeCard.css';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 export function EmployeeCard() {
 
-    const employee = useSelector(state => state.employees.all[0]);
+    const selectedId = useSelector(state => state.employees.selectedId);
+    const employees = useSelector(state => state.employees.all);
+    const employee = employees.find(e => e.id === selectedId);
+
     if (!employee) {
         return null;
     }

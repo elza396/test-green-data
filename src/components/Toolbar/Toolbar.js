@@ -2,18 +2,35 @@ import React from "react";
 import'./Toolbar.css';
 import {Button} from "../Button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteEmployee} from "../../redux/empoyees/actions";
+import {addEmployee, deleteEmployee, selectedEmployee} from "../../redux/empoyees/actions";
 
 
 export function Toolbar() {
 
     const dispatch = useDispatch();
     const selectedId = useSelector(state => state.employees.selectedId);
+    const newEmployee = {
+        name: "",
+        position: "",
+        birthdate: "",
+        sex: "",
+        isFired: "",
+        colleagues: [],
+        id: Date.now(),
+    }
+
 
     return (
         <div className="toolbar">
-            <Button >Добавить нового сотрудника</Button>
-            <Button onClick={() => dispatch(deleteEmployee(selectedId))} >Удалить выбранного сотрудника</Button>
+            <Button onClick={() => {
+                dispatch(addEmployee(newEmployee))
+                dispatch(selectedEmployee(newEmployee.id))
+            }}
+
+            >Добавить нового сотрудника</Button>
+            <Button onClick={() => dispatch(deleteEmployee(selectedId))}>
+                Удалить выбранного сотрудника
+            </Button>
         </div>
     )
 }
