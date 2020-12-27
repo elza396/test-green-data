@@ -22,7 +22,7 @@ export function ListEmpoyees() {
                     <p className="employee__attributes">{employee.position}</p>
                     <p className="employee__attributes">{employee.birthdate}</p>
                     <p className="employee__attributes">{employee.sex}</p>
-                    <p className="employee__attributes">{employee.isFired}</p>
+                    <p className="employee__attributes">{employee.isFired && "Уволен"}</p>
                     <p className="employee__attributes">{employee.colleagues}</p>
                 </div>
             ))

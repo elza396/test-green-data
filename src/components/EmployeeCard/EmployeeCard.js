@@ -1,14 +1,29 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './EmployeeCard.css';
 import {useDispatch, useSelector} from "react-redux";
+import {updateEmployee} from "../../redux/empoyees/actions";
 
 export function EmployeeCard() {
 
     const selectedId = useSelector(state => state.employees.selectedId);
     const employees = useSelector(state => state.employees.all);
     const employee = employees.find(e => e.id === selectedId);
+    const dispatch = useDispatch();
 
-    if (!employee) {
+    const [editedEmployee, setEditedEmployee] = useState(null);
+
+    useEffect(() => {
+        setEditedEmployee(employee);
+    }, [employee]);
+
+    useEffect(() => {
+        if (editedEmployee === employee || editedEmployee === null) {
+            return
+        }
+        dispatch(updateEmployee(editedEmployee))
+    }, [editedEmployee, dispatch]);
+
+    if (!editedEmployee) {
         return null;
     }
 
@@ -18,13 +33,19 @@ export function EmployeeCard() {
                 <label className="employeeCard__name">
                     ФИО<sup>*</sup>
                     <br/>
-                    <input required type="text" value={employee.name || ""}/>
+                    <input required
+                           type="text"
+                           value={editedEmployee.name}
+                           onChange={(e) => setEditedEmployee({...editedEmployee, name: e.target.value})}/>
                 </label>
                 <br/>
                 <label className="employeeCard__position">
                     Должность<sup>*</sup>
                     <br/>
-                    <select value={employee.position} required >
+                    <select
+                        value={editedEmployee.position}
+                        required
+                        onChange={(e) => setEditedEmployee({...editedEmployee, position: e.target.value})}>
                         <option value="">Выберите должность</option>
                         <option value="Директор">Директор</option>
                         <option value="Заместитель директора">Заместитель директора</option>
@@ -37,26 +58,50 @@ export function EmployeeCard() {
                 <label className="employeeCard__birthdate">
                     Дата рождения
                     <br/>
-                    <input type="date" min="1920-01-01" max="2006-12-31" value={employee.birthdate || ""}/>
+                    <input
+                        type="date"
+                        min="1920-01-01"
+                        max="2006-12-31"
+                        value={editedEmployee.birthdate}
+                        onChange={(e) => setEditedEmployee({...editedEmployee, birthdate: e.target.value})}/>
                 </label>
                 <br/>
                 <label className="employeeCard__sex">
                     Пол
                     <br/>
-                    <label><input checked={employee.sex === "male"} name="sex" type="radio" value="male" />Мужской</label>
+                    <label>
+                        <input checked={editedEmployee.sex === "Мужчина"}
+                               name="sex"
+                               type="radio"
+                               value="Мужчина"
+                               onChange={(e) => setEditedEmployee({...editedEmployee, sex: e.target.value})}/>
+                                  Мужской
+                    </label>
                     <br/>
-                    <label><input checked={employee.sex === "female"} name="sex" type="radio" value="female" />Женский</label>
+                    <label><input
+                        checked={editedEmployee.sex === "Женщина"}
+                        name="sex"
+                        type="radio"
+                        value="Женщина"
+                        onChange={(e) => setEditedEmployee({...editedEmployee, sex: e.target.value})}/>
+                            Женский
+                    </label>
                 </label>
                 <br/>
                 <label className="employeeCard__isFired">
                     Уволен
-                    <input type="checkbox" checked={employee.isFired || ""}/>
+                    <input
+                        type="checkbox"
+                        checked={editedEmployee.isFired}
+                        onChange={(e) => setEditedEmployee({...editedEmployee, isFired: e.target.checked})}/>
                 </label>
                 <br/>
                 <label className="employeeCard__colleagues">
                     Коллеги
                     <br/>
-                    <select  >
+                    <select
+                        value={editedEmployee.colleagues}
+                        onChange={(e) => setEditedEmployee({...editedEmployee, colleagues: e.target.value})}>
                         <option value="">Выберите коллег</option>
                         <option value=""></option>
                         <option value=""></option>

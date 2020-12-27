@@ -50,7 +50,7 @@ export function employees(state = initialState, action) {
             return newState;
         }
         case UPDATE_EMPLOYEE: {
-            const newState = {all: state.all.slice(0)};
+            const newState = {all: state.all.slice(0), selectedId: state.selectedId};
             const index = newState.all.findIndex(employee => employee.id === action.payload.id);
             newState.all[index] = action.payload;
 
