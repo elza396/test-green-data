@@ -4,7 +4,10 @@ import {useSelector} from "react-redux";
 
 export function EmployeeCard() {
 
-    const employee = useSelector(state => state.employees.all[1]);
+    const employee = useSelector(state => state.employees.all[0]);
+    if (!employee) {
+        return null;
+    }
 
     return (
         <div className="employeeCard">
@@ -37,9 +40,9 @@ export function EmployeeCard() {
                 <label className="employeeCard__sex">
                     Пол
                     <br/>
-                    <input checked={employee.sex === "male"} name="sex" type="radio" value="male" id="sexMale"/><label for="sexMale">Мужской</label>
+                    <label><input checked={employee.sex === "male"} name="sex" type="radio" value="male" />Мужской</label>
                     <br/>
-                    <input checked={employee.sex === "female"} name="sex" type="radio" value="female" id="sexFemale"/><label for="sexFemale">Женский</label>
+                    <label><input checked={employee.sex === "female"} name="sex" type="radio" value="female" />Женский</label>
                 </label>
                 <br/>
                 <label className="employeeCard__isFired">

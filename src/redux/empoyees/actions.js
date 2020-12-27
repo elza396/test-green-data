@@ -1,4 +1,4 @@
-import {ADD_EMPLOYEE, DELETE_EMPLOYEE, UPDATE_EMPLOYEE} from "./action-types";
+import {ADD_EMPLOYEE, DELETE_EMPLOYEE, SELECTED_EMPLOYEE, UPDATE_EMPLOYEE} from "./action-types";
 
 
 export const addEmployee = employee => ({
@@ -14,4 +14,9 @@ export const deleteEmployee = id => ({
 export const updateEmployee = employee => ({
     type: UPDATE_EMPLOYEE,
     payload: employee,
+});
+
+export const selectedEmployee = id => ({
+    type: SELECTED_EMPLOYEE,
+    payload: id,
 });

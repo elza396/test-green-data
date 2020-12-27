@@ -1,4 +1,4 @@
-import {ADD_EMPLOYEE, DELETE_EMPLOYEE, UPDATE_EMPLOYEE} from "./action-types";
+import {ADD_EMPLOYEE, DELETE_EMPLOYEE, SELECTED_EMPLOYEE, UPDATE_EMPLOYEE} from "./action-types";
 
 const initialState = {
     all: [
@@ -9,6 +9,7 @@ const initialState = {
             sex: "female",
             isFired: true,
             colleagues: [],
+            id: 1,
         },
         {
             name: "Gazizov Salavat Kadirovich",
@@ -17,8 +18,10 @@ const initialState = {
             sex: "male",
             isFired: false,
             colleagues: [],
+            id: 2,
         },
     ],
+    selectedId: -1,
 };
 
 export function employees(state = initialState, action) {
@@ -42,6 +45,9 @@ export function employees(state = initialState, action) {
             newState.all[index] = action.payload;
 
             return newState;
+        }
+        case SELECTED_EMPLOYEE: {
+            return {...state, selectedId: action.payload}
         }
         default:
             return state;

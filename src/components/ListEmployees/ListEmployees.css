@@ -7,6 +7,10 @@
     background: #eeeeee;
     margin-bottom: 20px;
 }
+.selectedEmployee {
+    border: #90eee3 solid 1px;
+    background: #e2f1f5;
+}
 .employee__name {
     font-size: 20px;
     margin: 10px;

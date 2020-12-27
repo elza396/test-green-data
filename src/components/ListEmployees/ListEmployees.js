@@ -1,14 +1,22 @@
 import React from "react";
 import './ListEmployees.css';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {selectedEmployee} from "../../redux/empoyees/actions";
 
 
 export function ListEmpoyees() {
+
     const employees = useSelector(state => state.employees.all);
+    const selectedId = useSelector(state => state.employees.selectedId);
+
+    const dispatch = useDispatch();
+
     return (
         <div className="listEmployees">
             {employees.map(employee => (
-                <div className="employee">
+                <div onClick={() => dispatch(selectedEmployee(employee.id))}
+                     key={employee.id}
+                     className={`employee ${selectedId === employee.id && "selectedEmployee"}`}>
                     <p className="employee__name">{employee.name}</p>
                     <p className="employee__attributes">{employee.position}</p>
                     <p className="employee__attributes">{employee.birthdate}</p>
