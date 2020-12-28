@@ -5,3 +5,9 @@
     justify-content: space-around;
     align-items: center;
 }
+.button__delete {
+    background: #f5c0c0;
+}
+.button__add {
+    background: #c5e9c5;
+}

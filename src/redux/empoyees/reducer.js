@@ -7,7 +7,7 @@ const initialState = {
             position: "Разработчик",
             birthdate: "1996-12-09",
             sex: "Женщина",
-            isFired: true,
+            isFired: false,
             colleagues: [2, 3],
             id: 1,
         }

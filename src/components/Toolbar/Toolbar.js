@@ -22,12 +22,13 @@ export function Toolbar() {
 
     return (
         <div className="toolbar">
-            <Button onClick={() => {
+            <Button className="button__add" onClick={() => {
                 dispatch(addEmployee(newEmployee))
                 dispatch(selectedEmployee(newEmployee.id))
-            }}
-            >Добавить нового сотрудника</Button>
-            <Button onClick={() => dispatch(deleteEmployee(selectedId))}>
+            }}>
+                Добавить нового сотрудника
+            </Button>
+            <Button className="button__delete" onClick={() => dispatch(deleteEmployee(selectedId))}>
                 Удалить выбранного сотрудника
             </Button>
         </div>
