@@ -26,7 +26,6 @@ export function Toolbar() {
                 dispatch(addEmployee(newEmployee))
                 dispatch(selectedEmployee(newEmployee.id))
             }}
-
             >Добавить нового сотрудника</Button>
             <Button onClick={() => dispatch(deleteEmployee(selectedId))}>
                 Удалить выбранного сотрудника

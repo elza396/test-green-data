@@ -5,6 +5,7 @@
     border: #bebebe solid 1px;
     border-radius: 10px;
     background: #eeeeee;
+    padding-bottom: 15px;
     margin-bottom: 20px;
 }
 .selectedEmployee {

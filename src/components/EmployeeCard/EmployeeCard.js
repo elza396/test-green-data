@@ -95,20 +95,22 @@ export function EmployeeCard() {
                         checked={editedEmployee.isFired}
                         onChange={(e) => setEditedEmployee({...editedEmployee, isFired: e.target.checked})}/>
                 </label>
-                <br/>
-                <label className="employeeCard__colleagues">
-                    Коллеги
-                    <br/>
-                    <select
-                        multiple
-                        name="value[]"
-                        onChange={(e) => setEditedEmployee({...editedEmployee, colleagues: e.target.value})}>
-                        <option disabled value="">Выберите коллег</option>
-                        {employees.map(employee => (
-                            <option value={employee.id}>{employee.name}</option>
-                        ))}
-                    </select>
-                </label>
+                {/*<br/>*/}
+                {/*<label className="employeeCard__colleagues">*/}
+                {/*    Коллеги*/}
+                {/*    <br/>*/}
+                {/*    <select*/}
+                {/*        multiple*/}
+                {/*        onChange={(e) => {*/}
+                {/*            const selected = Array.from(e.target.options).filter(option => option.selected).map(o => +o.value)*/}
+                {/*            setEditedEmployee({...editedEmployee, colleagues: selected})*/}
+                {/*        }}>*/}
+                {/*        <option disabled value="">Выберите коллег</option>*/}
+                {/*        {employees.map(employee => (*/}
+                {/*            <option value={employee.id}>{employee.name}</option>*/}
+                {/*        ))}*/}
+                {/*    </select>*/}
+                {/*</label>*/}
             </form>
         </div>
     )

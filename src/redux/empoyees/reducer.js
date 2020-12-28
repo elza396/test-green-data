@@ -4,31 +4,13 @@ const initialState = {
     all: [
         {
             name: "Газизова Эльза Кадировна",
-            position: "Директор",
+            position: "Разработчик",
             birthdate: "1996-12-09",
-            sex: "Женский",
+            sex: "Женщина",
             isFired: true,
             colleagues: [2, 3],
             id: 1,
-        },
-        {
-            name: "Газизов Салават Кадирович",
-            position: "Разработчик",
-            birthdate: "1991-10-26",
-            sex: "Мужской",
-            isFired: false,
-            colleagues: [],
-            id: 2,
-        },
-        {
-            name: "Малков Сергей Васильевич",
-            position: "Разработчик",
-            birthdate: "1991-08-23",
-            sex: "male",
-            isFired: true,
-            colleagues: [],
-            id: 3,
-        },
+        }
     ],
     selectedId: -1,
 };

@@ -14,18 +14,21 @@ export function ListEmpoyees() {
 
     return (
         <div className="listEmployees">
-            {fullEmployees.map(employee => (
-                <div onClick={() => dispatch(selectedEmployee(employee.id))}
+            {fullEmployees.map(employee => {
+                const birthDate = new Date(employee.birthdate);
+                const formattedBirthdate = `${birthDate.getDate().toString().padStart(2, '0')}.${(birthDate.getMonth()+1).toString().padStart(2, '0')}.${birthDate.getFullYear()}`
+
+                return <div onClick={() => dispatch(selectedEmployee(employee.id))}
                      key={employee.id}
                      className={`employee ${selectedId === employee.id && "selectedEmployee"}`}>
                     <p className="employee__name">{employee.name}</p>
                     <p className="employee__attributes">{employee.position}</p>
-                    <p className="employee__attributes">{employee.birthdate}</p>
+                    {employee.birthdate.length > 0 &&  <p className="employee__attributes">{formattedBirthdate}</p>}
                     <p className="employee__attributes">{employee.sex}</p>
                     <p className="employee__attributes">{employee.isFired && "Уволен"}</p>
-                    <p className="employee__attributes">{employee.colleagues}</p>
+                    {/*<p className="employee__attributes">{employee.colleagues}</p>*/}
                 </div>
-            ))
+            })
             }
         </div>
     )
