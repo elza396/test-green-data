@@ -7,7 +7,7 @@ import {selectedEmployee} from "../../redux/empoyees/actions";
 export function ListEmpoyees() {
 
     const employees = useSelector(state => state.employees.all);
-    const fullEmployees = employees.filter(employee => employee.name.length > 5 && employee.position);
+    const fullEmployees = employees.filter(employee => employee.name.length > 4 && employee.position);
     const selectedId = useSelector(state => state.employees.selectedId);
 
     const dispatch = useDispatch();

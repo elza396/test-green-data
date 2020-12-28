@@ -46,7 +46,7 @@ export function EmployeeCard() {
                         value={editedEmployee.position}
                         required
                         onChange={(e) => setEditedEmployee({...editedEmployee, position: e.target.value})}>
-                        <option value="">Выберите должность</option>
+                        <option disabled value="">Выберите должность</option>
                         <option value="Директор">Директор</option>
                         <option value="Заместитель директора">Заместитель директора</option>
                         <option value="Разработчик">Разработчик</option>
@@ -100,14 +100,13 @@ export function EmployeeCard() {
                     Коллеги
                     <br/>
                     <select
-                        value={editedEmployee.colleagues}
+                        multiple
+                        name="value[]"
                         onChange={(e) => setEditedEmployee({...editedEmployee, colleagues: e.target.value})}>
-                        <option value="">Выберите коллег</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
+                        <option disabled value="">Выберите коллег</option>
+                        {employees.map(employee => (
+                            <option value={employee.id}>{employee.name}</option>
+                        ))}
                     </select>
                 </label>
             </form>
