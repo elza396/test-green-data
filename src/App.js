@@ -1,15 +1,15 @@
 import React from "react";
 import './App.css';
-import {Toolbar} from "./components/Toolbar/Toolbar";
-import {ListEmpoyees} from "./components/ListEmployees/ListEmployees";
+import {ToolbarConnected} from "./components/Toolbar/Toolbar";
+import {ListEmployeesConnected} from "./components/ListEmployees/ListEmployees";
 import {EmployeeCard} from "./components/EmployeeCard/EmployeeCard";
 
 function App() {
   return (
     <div className="App">
-        <Toolbar />
+        <ToolbarConnected />
         <div className="container">
-            <ListEmpoyees />
+            <ListEmployeesConnected />
             <EmployeeCard />
         </div>
     </div>

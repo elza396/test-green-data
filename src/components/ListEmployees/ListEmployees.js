@@ -1,16 +1,17 @@
 import React from "react";
 import './ListEmployees.css';
-import {useDispatch, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {selectedEmployee} from "../../redux/empoyees/actions";
 
 
-export function ListEmpoyees() {
+function ListEmpoyees(props) {
 
-    const employees = useSelector(state => state.employees.all);
+    const {employees , selectedId} = props;
+    // const employees = useSelector(state => state.employees.all);
     const fullEmployees = employees.filter(employee => employee.name.length > 4 && employee.position);
-    const selectedId = useSelector(state => state.employees.selectedId);
+    // const selectedId = useSelector(state => state.employees.selectedId);
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <div className="listEmployees">
@@ -18,7 +19,10 @@ export function ListEmpoyees() {
                 const birthDate = new Date(employee.birthdate);
                 const formattedBirthdate = `${birthDate.getDate().toString().padStart(2, '0')}.${(birthDate.getMonth()+1).toString().padStart(2, '0')}.${birthDate.getFullYear()}`
 
-                return <div onClick={() => dispatch(selectedEmployee(employee.id))}
+                return <div onClick={() => {
+                    props.selectedEmployee(employee)
+                    // dispatch(selectedEmployee(employee.id))
+                }}
                      key={employee.id}
                      className={`employee ${selectedId === employee.id && "selectedEmployee"}`}>
                     <p className="employee__name">{employee.name}</p>
@@ -33,3 +37,13 @@ export function ListEmpoyees() {
         </div>
     )
 }
+
+export const ListEmployeesConnected = connect(
+    state => ({
+        employees: state.employees.all,
+        selectedId: state.employees.selectedId
+    }),
+    dispatch => ({
+        selectedEmployee: (employee) => dispatch(selectedEmployee(employee.id))
+    })
+)(ListEmpoyees)
