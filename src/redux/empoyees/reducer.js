@@ -1,4 +1,5 @@
 import {ADD_EMPLOYEE, DELETE_EMPLOYEE, SELECTED_EMPLOYEE, UPDATE_EMPLOYEE} from "./action-types";
+import {isValidEmployee} from "../../helpers/employee";
 
 const initialState = {
     all: [
@@ -19,7 +20,7 @@ export function employees(state = initialState, action) {
     switch (action.type) {
         case ADD_EMPLOYEE: {
             const newState = {...state, all: state.all.slice(0)};
-            newState.all = newState.all.filter(e => (e.name.length > 4 && e.position));
+            newState.all = newState.all.filter(isValidEmployee);
             newState.all.push(action.payload);
 
             return newState;
@@ -36,8 +37,6 @@ export function employees(state = initialState, action) {
             const newState = {...state, all: state.all.slice(0)};
             const index = newState.all.findIndex(employee => employee.id === action.payload.id);
             newState.all[index] = action.payload;
-            if (newState.all[index].name.length < 4 || !newState.all[index].position) return state;
-
             return newState;
         }
         case SELECTED_EMPLOYEE: {

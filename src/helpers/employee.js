@@ -1,0 +1,1 @@
+export const isValidEmployee = (e) => (e.name.length > 4 && e.position);

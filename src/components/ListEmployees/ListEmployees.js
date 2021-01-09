@@ -2,16 +2,12 @@ import React from "react";
 import './ListEmployees.css';
 import {connect} from "react-redux";
 import {selectedEmployee} from "../../redux/empoyees/actions";
+import {isValidEmployee} from "../../helpers/employee";
 
 
 function ListEmpoyees(props) {
-
     const {employees , selectedId} = props;
-    // const employees = useSelector(state => state.employees.all);
-    const fullEmployees = employees.filter(employee => employee.name.length > 4 && employee.position);
-    // const selectedId = useSelector(state => state.employees.selectedId);
-
-    // const dispatch = useDispatch();
+    const fullEmployees = employees.filter(isValidEmployee);
 
     return (
         <div className="listEmployees">
@@ -21,7 +17,6 @@ function ListEmpoyees(props) {
 
                 return <div onClick={() => {
                     props.selectedEmployee(employee)
-                    // dispatch(selectedEmployee(employee.id))
                 }}
                      key={employee.id}
                      className={`employee ${selectedId === employee.id && "selectedEmployee"}`}>

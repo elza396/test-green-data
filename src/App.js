@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import {ToolbarConnected} from "./components/Toolbar/Toolbar";
 import {ListEmployeesConnected} from "./components/ListEmployees/ListEmployees";
-import {EmployeeCard} from "./components/EmployeeCard/EmployeeCard";
+import {EmployeeCardConnected} from "./components/EmployeeCard/EmployeeCard";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <ToolbarConnected />
         <div className="container">
             <ListEmployeesConnected />
-            <EmployeeCard />
+            <EmployeeCardConnected />
         </div>
     </div>
   );
